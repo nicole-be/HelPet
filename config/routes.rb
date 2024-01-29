@@ -9,4 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pets#index"
+
+  # placeholder resources that we can work on each model in parallel
+  resources :pets
+  resources :pages
+  resources :bookings
 end
