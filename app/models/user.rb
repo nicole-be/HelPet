@@ -14,6 +14,7 @@ class User < ApplicationRecord
   # validates :password
   validates :first_name, presence: true, length: { minimum: 3 }
   validates :last_name, presence: true, length: { minimum: 3 }
-  validates :role, inclusion: { in: ROLE }
+  # we don't need the role, as it causes problems when creating a new user -> default?
+  # validates :role, inclusion: { in: ROLE }
   validates :address, presence: true
 end
