@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  ROLE = ["owner", "client"]
+  # ROLE = ["Owner", "Client"]
 
   has_many :pets
   has_many :bookings
@@ -14,6 +14,6 @@ class User < ApplicationRecord
   # validates :password
   validates :first_name, presence: true, length: { minimum: 3 }
   validates :last_name, presence: true, length: { minimum: 3 }
-  validates :role, inclusion: { in: ROLE }
+  # validates :role, inclusion: { in: ROLE }
   validates :address, presence: true
 end

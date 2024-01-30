@@ -1,0 +1,23 @@
+
+<h1 class="text-center">My profile</h1>
+
+<div class="container my-4 py-2">
+  <div class="row">
+    <div class="col text-center">
+      <h4>Name</h3>
+      <%= @user.first_name %> <%= @user.last_name  %>
+    </div>
+    <div class="col text-center">
+      <h4>Address</h3>
+      <%= @user.address %>
+    </div>
+    <div class="col text-center">
+      <h4>Description</h3>
+        <% if @user.description == nil %>
+          <%= "No description yet!" %>
+        <% else %>
+          <%= @user.description %>
+        <% end %>
+    </div>
+  </div>
+</div>
