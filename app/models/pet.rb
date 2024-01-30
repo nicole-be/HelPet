@@ -5,6 +5,6 @@ class Pet < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2 }
   validates :species, presence: true # nice to have: a fixed list to choose from (dropdown or something)
-  validates :breed TBD later on with the API
+  validates :breed #TBD later on with the API
   validates :description, presence: true, length: { minimum: 150 }
 end
