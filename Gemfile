@@ -53,6 +53,10 @@ gem "sassc-rails"
 # user stuff
 gem "devise"
 
+# image upload
+gem "cloudinary"
+
+
 
 group :development, :test do
   gem "dotenv-rails"
