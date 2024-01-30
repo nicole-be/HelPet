@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  ROLE = ["owner", "client"]
+  # ROLE = ["Owner", "Client"]
 
   has_many :pets
   has_many :bookings
