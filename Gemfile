@@ -56,6 +56,9 @@ gem "devise"
 # image upload
 gem "cloudinary"
 
+# faker
+gem 'faker'
+
 
 
 group :development, :test do

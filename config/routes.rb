@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
   # root to: "pages#home"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -33,10 +34,12 @@ Rails.application.routes.draw do
   # end
 
   # placeholder resources that we can work on each model in parallel
-  # resources :pets do
-  #   resources :bookings, except: [:destroy]
-  # end
-  # resources :bookings, only: [:destroy]
-  # resources :pages
-
+   resources :pets do
+     resources :bookings, except: [:destroy]
+   end
+   resources :bookings, only: [:destroy]
+  resources :pages
+# get 'pets/:id', to: 'pets#show'
+# get 'pets/new', to: 'pets#new'
+# post 'pets/new', to: 'pets#create'
 end
