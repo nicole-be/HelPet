@@ -4,5 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  ROLE = ["owner", "client"]
+
   has_many :pets
+  has_many :bookings
+  has_one_attached :photo
+
+  # validates :email, presence: true
+  # validates :password
+  validates :first_name, presence: true, length: { minimum: 3 }
+  validates :last_name, presence: true, length: { minimum: 3 }
+  validates :role, inclusion: { in: ROLE }
+  validates :address, presence: true
 end
