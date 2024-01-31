@@ -19,5 +19,9 @@
           <%= @user.description %>
         <% end %>
     </div>
-  </div>
+  <%# <%= cl_image_tag(@user.photo.key, width: 150px, height: 150px, crop: :thumb gravity: :face ) %> 
 </div>
+  <div class="text-center py-6">
+    <button class="my-button back my-4 mx-4"><%= link_to "Back", root_path %></button>
+    <button class="my-button my-4"><%= link_to "Edit your profile", edit_user_registration_path %></button>
+  </div>
