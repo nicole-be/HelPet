@@ -22,7 +22,7 @@
         <%# <%= f.input :role, collection: User::ROLE,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "role" }%> 
+                    input_html: { autocomplete: "role" }%>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
@@ -40,7 +40,7 @@
         <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
       </div>
     <% end %>
-    <div class="my-3">
-      <%= render "devise/shared/links" %>
+    <div>
+      <button class="btn btn-primary my-3"> <%= link_to "<div class='text-white'>Back</div>".html_safe, :back %></button>
     </div>
 </div>
