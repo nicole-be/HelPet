@@ -12,8 +12,10 @@
 
   <body>
 
+
 <nav class="navbar navbar-light bg-light">
       <h1>HelPet</h1>
+      <h6>Your source for instant emotional support. Rent a furry friend, unleash happiness!<h6>
       <% if user_signed_in? %>
         <%= link_to "<i class='fa-solid fa-person fa-2x'></i>".html_safe, user_path(current_user) %>
         <button class="my-button"> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %></button>

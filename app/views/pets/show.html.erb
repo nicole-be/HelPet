@@ -3,7 +3,7 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
 
-        <h1>Pet Details</h1>
+        <h2>Companion Details</h2>
 
           <div>
             <strong>Name:</strong>
@@ -25,13 +25,13 @@
         <%= @pet.description %>
       </div>
       <% @pet.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
+        <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
       <% end %>
-
-    <%= link_to 'Back', pets_path %>
   </div>
+  <button class="my-button"><%= link_to 'Back', pets_path %></button>
 </div>
 </div>
 </div>
+
 
 <%#= render 'bookings/form', pet: @pet %>
