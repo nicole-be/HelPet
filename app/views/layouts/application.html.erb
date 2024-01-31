@@ -11,8 +11,19 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+
+  <nav class="navbar navbar-light bg-light">
+  <h1>HelPet</h1>
+    <form class="form-inline">
+      <button class="my-button"><%= link_to "Log in", new_user_session_path %></button>
+      <button class="my-button"><%= link_to "Sign up", new_user_registration_path %></button>
+    </form>
+  </nav>
+
+    <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+    </div>
   </body>
 </html>

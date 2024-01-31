@@ -1,6 +1,11 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show]
 
+  def index
+    @pets = Pet.all
+    @pets_count = @pets.count
+  end
+
   def show
     @booking = Booking.new
   end
