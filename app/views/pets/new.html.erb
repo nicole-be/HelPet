@@ -5,9 +5,9 @@
         <h3>Create a new pet profile</h3>
         <%= simple_form_for @pet do |f| %>
           <%= f.input :name %>
-           <%= f.input :species %>
-            <%= f.input :breed %>
-            <%= f.input :description %>
+          <%= f.input :species %>
+          <%= f.input :breed %>
+          <%= f.input :description %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit class: 'btn btn-flat' %>
         <% end %>
@@ -15,4 +15,3 @@
     </div>
   </div>
 </div>
-

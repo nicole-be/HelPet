@@ -3,8 +3,8 @@
   <div class="cards-layout">
     <% @pets.each do |pet| %>
       <div class="pet-card">
-      <%# @jendrik need to add the key that must be secret as not share on git?
-      The add in the below tag: style="background-image: url('<%= cl_image_path(pet.photos[0].key, height: 300, width: 300, crop: :fill) if pet.photos[0].present? %>
+        <%# @jendrik need to add the key that must be secret as not share on git?
+        The add in the below tag: style="background-image: url('<%= cl_image_path(pet.photos[0].key, height: 300, width: 300, crop: :fill) if pet.photos[0].present? %>
         <h2><%= link_to pet["name"].capitalize, pet_path(pet["id"]), class:"pet-name"%></h2>
         <p>Species: <%= pet.species.capitalize%></p>
       </div>
