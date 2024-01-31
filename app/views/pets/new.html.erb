@@ -10,9 +10,9 @@
             <%= f.input :description %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit class: 'btn btn-flat' %>
+          <button class="my-button"><%= link_to 'Back', pets_path %></button>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-
