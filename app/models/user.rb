@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   # ROLE = ["Owner", "Client"]
 
-  has_many :pets
-  has_many :bookings
+  has_many :pets, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   has_one_attached :photo
 
   # validates :email, presence: true

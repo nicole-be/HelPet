@@ -1,0 +1,17 @@
+<h2>Here are the bookings for <%= @pet.name %></h2>
+<div class="row justify-content-md-center">
+  <div class="cards-layout">
+    <% @pet.bookings.each do |booking| %>
+      <div class="pet-card">
+        <p>Who: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
+        <p>From: <%= booking.start_date.strftime("%e.%m.%Y") %></p>
+        <p>To: <%= booking.end_date.strftime("%e.%m.%Y") %></p>
+        <p>Status: <%= booking.status %></p>
+        <% if booking.status == "pending" %>
+          <%= link_to 'Accept', booking_path(booking, status: "accepted"), data: { turbo_method: :patch }, class: "btn btn-success" %>
+          <%= link_to 'Decline', booking_path(booking, status: "declined"), data: { turbo_method: :patch }, class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
