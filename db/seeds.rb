@@ -8,9 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# File.open(Rails.root.join('db/images/NAME_OF_YOUR_FILE.jpeg')
+
 puts "Cleaning database..."
-Pet.destroy_all
 Booking.destroy_all
+Pet.destroy_all
 User.destroy_all
 
 puts "Starting to seed..."
@@ -44,17 +46,30 @@ pet_call = {
 
 pets = []
 
+descriptions = {
+  cat: "This cat is the epitome of feline grace and charm. With fur as soft as moonlight, a cuddly companion who purrs melodies of joy, casting a spell of warmth and love with every gentle nuzzle. A true embodiment of feline enchantment!",
+  dog: "This canine comedian with a tail-wagging sense of humor! From goofy antics to hilarious expressions, a four-legged stand-up sensation, spreading laughter and joy with every playful bounce. Get ready for a daily dose of belly laughs and wagging tails with this lovable goofball!",
+  horse: "The majestic equine beauty that embodies grace and strength in every hoofbeat. With a coat that shimmers like sunlight on a tranquil meadow, a gentle giant with a heart as vast as the open fields. Riding into the sunset with this magnificent creature is a journey of pure elegance and companionship."
+}
+
+names = {
+  cat: "Mr. Whiskers",
+  dog: "Buddy",
+  horse: "Spirit"
+}
+
 12.times {
   species = pet_call.keys.sample
   @pet = Pet.new(
-    name: Faker::Name.name,
+    name: names[species],
     species: species.to_s,
     breed: pet_call[species],
-    description: Faker::Lorem.paragraph_by_chars(number: 150),
+    description: descriptions[species],
     user: users.sample
   )
 
   if @pet.save
+    @pet.photos.attach(io: File.open(Rails.root.join("app/assets/images/#{@pet.species}.jpg")), filename: "#{@pet.species}.jpg")
     pets << @pet
   else
     @pet.errors.messages
