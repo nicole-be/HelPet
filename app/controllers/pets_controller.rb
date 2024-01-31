@@ -22,7 +22,6 @@ class PetsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-    raise
   end
 
   private
@@ -35,5 +34,3 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
   end
 end
-
-#comment
