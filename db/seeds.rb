@@ -9,8 +9,8 @@
 #   end
 
 puts "Cleaning database..."
-Pet.destroy_all
 Booking.destroy_all
+Pet.destroy_all
 User.destroy_all
 
 puts "Starting to seed..."
