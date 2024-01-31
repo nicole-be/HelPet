@@ -24,7 +24,7 @@ users = []
     password_confirmation:'password',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.city
+    address: Faker::Address.city # changed to city, because of the map later on
     )
 
     if @user.save
