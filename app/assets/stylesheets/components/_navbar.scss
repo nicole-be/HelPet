@@ -4,18 +4,18 @@
   margin: 0 10px;
   background-color: rgb(147, 188, 242);
   border-radius: 20px;
+  &:hover {
+    text-decoration: none;
+    background-color: rgb(28, 84, 181);
+    font-weight: bolder;
+  }
   a {
     text-decoration:none;
     color: white;
   }
 }
 
-button :hover {
-  text-decoration: none;
-  color: rgb(113, 144, 197);
-  font-weight: bolder;
-}
-
 .navbar {
-  padding: 10px 50px
+  padding: 10px 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
 }

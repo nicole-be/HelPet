@@ -3,7 +3,7 @@
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
 
-        <h1>Pet Details</h1>
+        <h1>Companion Details</h1>
         <div>
           <strong>Name:</strong>
           <%= @pet.name %>
@@ -25,7 +25,7 @@
           <%= @pet.user.first_name %> <%= @pet.user.last_name %>
         </div>
         <% @pet.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 500, width: 400, crop: :fill %>
+          <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
         <% end %>
 
         <%= link_to 'Book me!', new_pet_booking_path(@pet) %>
@@ -34,6 +34,8 @@
       </div>
     </div>
   </div>
+  <button class="my-button"><%= link_to 'Back', pets_path %></button>
 </div>
+
 
 <%#= render 'bookings/form', pet: @pet %>

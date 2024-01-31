@@ -12,16 +12,21 @@
 
   <body>
 
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/">
-      <div class="fs-2">HelPet</div>
-    </a>
-    <form class="form-inline">
-      <button class="my-button"><%= link_to "Log in", new_user_session_path %></button>
-      <button class="my-button"><%= link_to "Sign up", new_user_registration_path %></button>
-    </form>
-  </nav>
-
+<nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="/">
+        <div class="fs-2">HelPet</div>
+      </a>
+      <h6>Your source for instant emotional support. Rent a furry friend, unleash happiness!<h6>
+      <% if user_signed_in? %>
+        <%= link_to "<i class='fa-solid fa-person fa-2x'></i>".html_safe, user_path(current_user) %>
+        <button class="my-button"> <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %></button>
+      <% else %>
+      <div class="d-flex flex-row-reverse">
+        <button class="my-button"> <%= link_to "Log in", new_user_session_path %></button>
+        <button class="my-button"> <%= link_to "Sign up", new_user_registration_path %></button>
+      </div>
+      <% end %>
+    </nav>
     <div class="container">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>

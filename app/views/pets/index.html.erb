@@ -1,3 +1,4 @@
+<div class= mainpage>
 <h2>Here are our <%= @pets_count %> available buddies!</h2>
 <div class="row justify-content-md-center">
   <div class="cards-layout">
@@ -10,4 +11,6 @@
       </div>
     <% end %>
   </div>
+</div>
+<button class="my-button"><%= link_to "Create Pet Profile", new_pet_path %></button>
 </div>
