@@ -77,7 +77,7 @@ pet = {
     species: species.to_s,
     breed: pet[species][:call],
     description: pet[species][:description],
-    price: rand(1.0 .. 999.0).round(2),
+    price: rand(1.0 .. 100.0).round(2),
     user: users.sample
   )
 
