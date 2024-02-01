@@ -4,6 +4,9 @@ class PetsController < ApplicationController
   def index
     @pets = Pet.all
     @pets_count = @pets.count
+    if params.dig(:query).present?
+      @pets = Pet.global_search(params[:query])
+    end
   end
 
   def show
