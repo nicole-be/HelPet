@@ -4,8 +4,8 @@
     <% @pet.bookings.each do |booking| %>
       <div class="pet-card">
         <p>Who: <%= booking.user.first_name %> <%= booking.user.last_name %></p>
-        <p>From: <%= booking.start_date.strftime("%e.%m.%Y") %></p>
-        <p>To: <%= booking.end_date.strftime("%e.%m.%Y") %></p>
+        <p>From: <%= booking.start_date&.strftime("%e.%m.%Y") %></p>
+        <p>To: <%= booking.end_date&.strftime("%e.%m.%Y") %></p>
         <p>Status: <%= booking.status %></p>
         <% if booking.status == "pending" %>
           <%= link_to 'Accept', booking_path(booking, status: "accepted"), data: { turbo_method: :patch }, class: "btn btn-success" %>

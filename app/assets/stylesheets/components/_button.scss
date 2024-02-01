@@ -32,20 +32,22 @@
 }
 
 .btn-flat {
-  color: white;
-  padding: 8px 24px;
-  border-radius: 4px;
-  background: #670BFF;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #93bcf2;
+  border-radius: 20px;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
+  background: #0a4791;
   color: white;
 }
 
 .btn-gradient {
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
