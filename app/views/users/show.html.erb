@@ -1,29 +1,68 @@
 <div class="container my-3">
   <h1 class="text-center">My profile</h1>
 
-  <div class="container my-4 py-2">
+  <div class="container my-3 py-1">
     <div class="row">
+    <div class="d-flex justify-content-center">
+          <%= cl_image_tag(current_user.photo.key, :transformation=>[
+          {:gravity=>"face", :height=>175, :width=>175, :crop=>"thumb", :radius=>"max", :border=>"2px_solid_black" },
+          {:radius=>"max"},
+          {:fetch_format=>:auto}
+          ]) %>
+    </div>
+    <p class="text-center pt-4"> <i class="fa-solid fa-location-dot px-2"></i><%= @user.address %> </p>
+    </div>
+    <div class="row my-3">
       <div class="col text-center">
         <h4>Name</h3>
         <%= @user.first_name %> <%= @user.last_name  %>
       </div>
       <div class="col text-center">
-        <h4>Address</h3>
-        <%= @user.address %>
-      </div>
-      <div class="col text-center">
         <h4>Description</h3>
           <% if @user.description == nil %>
-            <%= "No description yet!" %>
+           <em><%= "No description yet!" %></em>
           <% else %>
             <%= @user.description %>
           <% end %>
       </div>
-    <%# <%= cl_image_tag(@user.photo.key, width: 150px, height: 150px, crop: :thumb gravity: :face ) %>
+      <div class="col text-center">
+        <h4>Address</h3>
+        <%= @user.address %>
+      </div>
     </div>
+
+    <div class="col text-center my-3 py-3">
+      <% if @user.pets.empty?%>
+        <h4>My pets</h4>
+        <p><%= "You have no pets!" %></p>
+        <% else %>
+        <div class="row">
+        <h4><%= "My pets"%></h4>
+          <% @user.pets.each do |pet| %>
+            <div class="pet-card col mx-4 my-4">
+              <div class="pet-card-info">
+                <%= cl_image_tag(pet.photos[0].key, height: 300, width: 300, crop: :fill, gravity: :face, class: "rounded-circle ratio ratio-1x1")%>
+                <div class="d-flex justify-content-between my-2">
+                  <h2><%= pet.name %></h2>
+                  <p> <%= "%.2f" %pet.price %> € / day</p>
+                </div>
+                  <div class="pet-card-description">
+                    <div class= "d-flex justify-content-start text-start">
+                      <%= pet.description %>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
     <div class="text-center py-6">
-      <button class="my-button back my-4 mx-4"><%= link_to "Back", root_path %></button>
       <button class="my-button my-4"><%= link_to "Edit your profile", edit_user_registration_path %></button>
+      <div>
+      <button class="my-button my-4 mx-4"><%= link_to "Back", root_path %></button>
+      </div>
     </div>
   </div>
 </div>

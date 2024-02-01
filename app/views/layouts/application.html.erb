@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -15,14 +16,11 @@
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
-          <h1>HelPet</h1>
+          <h1>HelPet🐶</h1>
         </a>
         <h4>Your source for instant emotional support. Rent a furry friend, unleash happiness! <i class="fa-solid fa-heart"></i></h4>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <%= link_to "Dashboard", "#", class: "nav-link" %>
-            </li>
             <li class="nav-item">
               <%= link_to "About", "#", class: "nav-link" %>
             </li>
@@ -39,6 +37,7 @@
             <% else %>
               <div class="d-flex flex-row-reverse">
                 <button class="my-button"> <%= link_to "Log in", new_user_session_path %></button>
+                <button class="my-button"> <%= link_to "Sign up", new_user_registration_path %></button>
               </div>
             <% end %>
           </ul>

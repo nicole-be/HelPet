@@ -29,3 +29,12 @@
     <% end %>
   </div>
 </div>
+
+<div class="my-4">
+  <h1 class="text-center">Check out where they are!</h1>
+  <div class="container my-4" style="width: 98.2%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
