@@ -5,8 +5,8 @@
         <h3>Create a new booking for <%= @pet.name %></h3>
         <p>Owner: <%= @pet.user.first_name %> <%= @pet.user.last_name %></p>
         <%= simple_form_for [@pet, @booking] do |f| %>
-          <%= f.input :start_date %>
-          <%= f.input :end_date %>
+          <%= f.input :start_date, label: "From" %>
+          <%= f.input :end_date, label: "To" %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
       </div>

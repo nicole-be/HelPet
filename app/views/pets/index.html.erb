@@ -1,16 +1,31 @@
-<div class= mainpage>
-<h2>Here are our <%= @pets_count %> available buddies!</h2>
-<div class="row justify-content-md-center">
-  <div class="cards-layout">
+<div class="container mx-auto mt-4">
+  <div class="d-flex align-items-center justify-content-between">
+    <h2 class="my-3">Here are <%= @pets_count %> available buddies for you!</h2>
+    <div><%= link_to "Create New Buddy", new_pet_path, class: "btn btn-ghost" %></div>
+  </div>
+  <div class="row">
     <% @pets.each do |pet| %>
-      <div class="pet-card">
-        <%# @jendrik need to add the key that must be secret as not share on git?
-        The add in the below tag: style="background-image: url('<%= cl_image_path(pet.photos[0].key, height: 300, width: 300, crop: :fill) if pet.photos[0].present? %>
-        <h2><%= link_to pet["name"].capitalize, pet_path(pet["id"]), class:"pet-name"%></h2>
-        <p>Species: <%= pet.species.capitalize%></p>
+      <div class="col-md-4 my-3">
+        <%= link_to pet_path(pet), class: "text-decoration-none" do %>
+          <div class="pet-card">
+            <div class="d-flex justify-content-center mt-3">
+              <%= cl_image_tag(pet.photos[0].key, height: 300, width: 300, crop: :fill, class: "rounded-circle ratio ratio-1x1") if pet.photos[0].key.present? %>
+            </div>
+            <div class="pet-card-info">
+              <div class="d-flex justify-content-between">
+                <h2><%= pet.name.capitalize %></h2>
+                <p> <%= "%.2f" %pet.price %> € / day</p>
+              </div>
+              <div class="d-flex justify-content-start">
+                <p><i class="fa-solid fa-location-dot"></i> <%= pet.user.address %></p>
+              </div>
+              <div class="pet-card-description">
+                <%= pet.description %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
-</div>
-<button class="my-button"><%= link_to "Create Pet Profile", new_pet_path %></button>
 </div>

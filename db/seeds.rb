@@ -19,6 +19,11 @@ puts "Starting to seed..."
 
 users = []
 
+user = {
+  address: ["Goethestraße, Frankfurt am Main", "Kurfürstendamm, Berlin", "Ludwigstraße, München", "Hohe Bleichen, Hamburg", "Potsdamer Platz, Berlin", "Kaiser-Wilhelm-Ring, Köln", "Schadowstraße, Düsseldorf", "Willy-Brandt-Straße, Hamburg", "Augustusplatz, Leipzig", "Friedrichstraße, Berlin"],
+  ctr: 0
+}
+
 8.times {
   @user = User.new(
     email: "test#{('a'..'z').to_a.sample*rand(1..5)}@example.com",
@@ -26,53 +31,64 @@ users = []
     password_confirmation:'password',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.city # changed to city, because of the map later on
+    address: user[:address].sample # changed to city, because of the map later on
     )
 
+    myuser = "avatar#{user[:ctr] % 4}"
+
     if @user.save
+      @user.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{myuser}.jpeg")), filename: "#{myuser}.jpeg")
+      user[:ctr] += 1
       users << @user
     else
-      @user.errors.messages
+      puts @user.errors.messages
     end
 }
 
 puts "Users created!"
 
-pet_call = {
-  dog: Faker::Creature::Dog.breed,
-  cat: Faker::Creature::Cat.breed,
-  horse: Faker::Creature::Horse.breed
-}
-
 pets = []
 
-descriptions = {
-  cat: "This cat is the epitome of feline grace and charm. With fur as soft as moonlight, a cuddly companion who purrs melodies of joy, casting a spell of warmth and love with every gentle nuzzle. A true embodiment of feline enchantment!",
-  dog: "This canine comedian with a tail-wagging sense of humor! From goofy antics to hilarious expressions, a four-legged stand-up sensation, spreading laughter and joy with every playful bounce. Get ready for a daily dose of belly laughs and wagging tails with this lovable goofball!",
-  horse: "The majestic equine beauty that embodies grace and strength in every hoofbeat. With a coat that shimmers like sunlight on a tranquil meadow, a gentle giant with a heart as vast as the open fields. Riding into the sunset with this magnificent creature is a journey of pure elegance and companionship."
-}
-
-names = {
-  cat: "Mr. Whiskers",
-  dog: "Buddy",
-  horse: "Spirit"
+pet = {
+  cat: {
+    call: Faker::Creature::Cat.breed,
+    name: ["Mr. Whiskers", "Oliver", "Chloe", "Simba", "Luna", "Jasper", "Mia", "Gizmo", "Cleo", "Oscar", "Nala"],
+    description: "This cat is the epitome of feline grace and charm.",
+    ctr: 0
+  },
+  dog: {
+    call: Faker::Creature::Dog.breed,
+    name: ["Buddy", "Bella", "Max", "Luna", "Rocky", "Daisy", "Charlie", "Sadie", "Toby", "Zoey", "Cooper"],
+    description: "This canine comedian with a tail-wagging sense of humor!",
+    ctr: 0
+  },
+  horse: {
+    call: Faker::Creature::Horse.breed,
+    name: ["Spirit", "Thunder", "Spirit", "Bella Rosa", "Maverick", "Starlight", "Dakota", "Serenity", "Apollo 13", "Willow Wind", "Midnight Majesty"],
+    description: "The majestic equine beauty that embodies grace and strength in every hoofbeat.",
+    ctr: 0
+  }
 }
 
 12.times {
-  species = pet_call.keys.sample
+  species = pet.keys.sample
   @pet = Pet.new(
-    name: names[species],
+    name: pet[species][:name].sample,
     species: species.to_s,
-    breed: pet_call[species],
-    description: descriptions[species],
+    breed: pet[species][:call],
+    description: pet[species][:description],
+    price: rand(1.0 .. 999.0).round(2),
     user: users.sample
   )
 
+  mypet = "#{@pet.species}#{pet[species][:ctr] % 4}"
+
   if @pet.save
-    @pet.photos.attach(io: File.open(Rails.root.join("app/assets/images/#{@pet.species}.jpg")), filename: "#{@pet.species}.jpg")
+    @pet.photos.attach(io: File.open(Rails.root.join("app/assets/images/#{mypet}.jpg")), filename: "#{mypet}.jpg")
+    pet[species][:ctr] += 1
     pets << @pet
   else
-    @pet.errors.messages
+    puts @pet.errors.messages
   end
 }
 
@@ -87,7 +103,7 @@ puts "Pets created!"
     user: users.sample
   )
 
-  @pet.errors.messages unless @booking.save
+  puts @pet.errors.messages unless @booking.save
 }
 
 puts "Bookings created!"

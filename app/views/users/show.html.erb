@@ -1,27 +1,29 @@
+<div class="container my-3">
+  <h1 class="text-center">My profile</h1>
 
-<h1 class="text-center">My profile</h1>
-
-<div class="container my-4 py-2">
-  <div class="row">
-    <div class="col text-center">
-      <h4>Name</h3>
-      <%= @user.first_name %> <%= @user.last_name  %>
+  <div class="container my-4 py-2">
+    <div class="row">
+      <div class="col text-center">
+        <h4>Name</h3>
+        <%= @user.first_name %> <%= @user.last_name  %>
+      </div>
+      <div class="col text-center">
+        <h4>Address</h3>
+        <%= @user.address %>
+      </div>
+      <div class="col text-center">
+        <h4>Description</h3>
+          <% if @user.description == nil %>
+            <%= "No description yet!" %>
+          <% else %>
+            <%= @user.description %>
+          <% end %>
+      </div>
+    <%# <%= cl_image_tag(@user.photo.key, width: 150px, height: 150px, crop: :thumb gravity: :face ) %>
     </div>
-    <div class="col text-center">
-      <h4>Address</h3>
-      <%= @user.address %>
+    <div class="text-center py-6">
+      <button class="my-button back my-4 mx-4"><%= link_to "Back", root_path %></button>
+      <button class="my-button my-4"><%= link_to "Edit your profile", edit_user_registration_path %></button>
     </div>
-    <div class="col text-center">
-      <h4>Description</h3>
-        <% if @user.description == nil %>
-          <%= "No description yet!" %>
-        <% else %>
-          <%= @user.description %>
-        <% end %>
-    </div>
-  <%# <%= cl_image_tag(@user.photo.key, width: 150px, height: 150px, crop: :thumb gravity: :face ) %> 
-</div>
-  <div class="text-center py-6">
-    <button class="my-button back my-4 mx-4"><%= link_to "Back", root_path %></button>
-    <button class="my-button my-4"><%= link_to "Edit your profile", edit_user_registration_path %></button>
   </div>
+</div>
