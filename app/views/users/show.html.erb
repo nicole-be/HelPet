@@ -19,7 +19,7 @@
       </div>
       <div class="col text-center">
         <h4>Description</h3>
-          <% if @user.description == nil %>
+          <% if @user.description.nil? %>
            <em><%= "No description yet!" %></em>
           <% else %>
             <%= @user.description %>
