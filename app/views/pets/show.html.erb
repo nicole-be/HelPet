@@ -1,5 +1,5 @@
 <div class = "details-container">
-<div class="container py-5" id="pets-details>
+<div class="container py-5" id="pets-details">
   <div class="row">
     <div class="col-12 col-md-7 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
@@ -33,20 +33,16 @@
         <p>
 
         <h3>Book me!</h3>
-                <%= simple_form_for [@pet, @booking] do |f| %>
-                <%= f.input :start_date, as: :string,
-                 input_html: { data: { controller: "datepicker" } } %>
-                <%= f.input :end_date, as: :string,
-                input_html: { data: { controller: "datepicker" } } %>
-                <%= f.submit class: 'btn btn-flat' %>
-                <button class="my-button"><%= link_to 'See bookings', pet_bookings_path(@pet) %></button>
-                <button class="my-button"><%= link_to 'Back', pets_path %></button>
-        <% end %>
+          <%= simple_form_for [@pet, @booking] do |f| %>
+            <%= f.input :start_date, as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+            <%= f.input :end_date, as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+            <%= f.submit class: 'btn btn-ghost btn-green' %>
+            <%= link_to 'See bookings', pet_bookings_path(@pet), class: "btn btn-ghost" %>
+            <%= link_to 'Back', pets_path, class: "btn btn-ghost" %>
+          <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-
-<%#= render 'bookings/form', pet: @pet %>

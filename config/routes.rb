@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :pets do
-    resources :bookings, except: [:destroy]
+    resources :bookings, except: :destroy
   end
-  resources :bookings, only: [:destroy, :update]
+  resources :bookings, only: :destroy
   resources :pages
 end
