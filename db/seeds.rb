@@ -77,7 +77,7 @@ pet = {
     species: species.to_s,
     breed: pet[species][:call],
     description: pet[species][:description],
-    price: rand(1.0 .. 999.0).round(2),
+    price: rand(1.0 .. 100.0).round(2),
     user: users.sample
   )
 
@@ -95,9 +95,11 @@ pet = {
 puts "Pets created!"
 
 10.times {
+  start_date = Faker::Date.between(from: '2023-01-01', to: Date.today)
+
   @booking = Booking.new(
-    start_date: Faker::Date.between(from: '2023-01-01', to: Date.today),
-    end_date: Faker::Date.between(from: '2023-01-01', to: Date.today),
+    start_date: start_date,
+    end_date: start_date.next_day(rand(1..30)),
     status: ["pending", "declined", "accepted"].sample,
     pet: pets.sample,
     user: users.sample
