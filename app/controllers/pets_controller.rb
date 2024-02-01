@@ -4,8 +4,17 @@ class PetsController < ApplicationController
   def index
     @pets = Pet.all
     @pets_count = @pets.count
+
+    @markers = @pets.map do |pet|
+      {
+        lat: pet.user.latitude,
+        lng: pet.user.longitude,
+        info_window_html: render_to_string(partial: "info_pets", locals: {pet: pet})
+      }
+
     if params.dig(:query).present?
       @pets = Pet.global_search(params[:query])
+
     end
   end
 

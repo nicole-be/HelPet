@@ -1,0 +1,9 @@
+<div class="d-flex flex-column justify-content-center">
+  <h2 class="text-center"><%= pet.name %></h2>
+  <p class="text-center"><i class="fa-solid fa-location-dot px-2"></i><%= pet.user.address %></p>
+  <%= cl_image_tag(pet.photos[0].key,:transformation=>[
+          {:gravity=>"face", :height=>175, :width=>175, :crop=>"thumb", :radius=>"max", :border=>"2px_solid_black" },
+          {:radius=>"max"},
+          {:fetch_format=>:auto}
+          ]) %>
+</div>
