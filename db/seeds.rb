@@ -19,6 +19,11 @@ puts "Starting to seed..."
 
 users = []
 
+user = {
+  address: ["Goethestraße, Frankfurt am Main", "Kurfürstendamm, Berlin", "Ludwigstraße, München", "Hohe Bleichen, Hamburg", "Potsdamer Platz, Berlin", "Kaiser-Wilhelm-Ring, Köln", "Schadowstraße, Düsseldorf", "Willy-Brandt-Straße, Hamburg", "Augustusplatz, Leipzig", "Friedrichstraße, Berlin"],
+  ctr: 0
+}
+
 8.times {
   @user = User.new(
     email: "test#{('a'..'z').to_a.sample*rand(1..5)}@example.com",
@@ -26,13 +31,17 @@ users = []
     password_confirmation:'password',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.city # changed to city, because of the map later on
+    address: user[:address].sample # changed to city, because of the map later on
     )
 
+    myuser = "avatar#{user[:ctr] % 4}"
+
     if @user.save
+      @user.photo.attach(io: File.open(Rails.root.join("app/assets/images/#{myuser}.jpeg")), filename: "#{myuser}.jpeg")
+      user[:ctr] += 1
       users << @user
     else
-      @user.errors.messages
+      puts @user.errors.messages
     end
 }
 
@@ -79,7 +88,7 @@ pet = {
     pet[species][:ctr] += 1
     pets << @pet
   else
-    @pet.errors.messages
+    puts @pet.errors.messages
   end
 }
 
@@ -94,7 +103,7 @@ puts "Pets created!"
     user: users.sample
   )
 
-  @pet.errors.messages unless @booking.save
+  puts @pet.errors.messages unless @booking.save
 }
 
 puts "Bookings created!"
