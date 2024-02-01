@@ -1,5 +1,8 @@
 <div class="container mx-auto mt-4">
-  <h2>Here are the bookings for <%= @pet.name %></h2>
+  <div class="d-flex align-items-center justify-content-between">
+    <h2>Here are the bookings for <%= @pet.name %></h2>
+    <div><%= link_to "Back", pet_path(@pet), class: "btn btn-ghost" %></div>
+  </div>
   <div class="row justify-content-md-center">
     <div class="cards-layout">
       <% @pet.bookings.each do |booking| %>
