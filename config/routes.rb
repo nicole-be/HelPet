@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :pets do
     resources :bookings, except: :destroy
   end
-  resources :bookings, only: :destroy
+  resources :bookings, only: [:destroy, :update]
   resources :pages
 end
