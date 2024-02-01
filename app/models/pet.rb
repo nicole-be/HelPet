@@ -9,4 +9,16 @@ class Pet < ApplicationRecord
   # disabled the description validator, because testing is easier then
   # validates :description, presence: true, length: { minimum: 150 }
   validates :price, presence: true, numericality: { minimum: 1.0 }
+
+  # search for a pet
+  include PgSearch::Model
+
+  pg_search_scope :global_search,
+    against: [ :name, :species, :breed, :description ],
+    associated_against: {
+      user: [ :first_name, :last_name, :address, :description ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
