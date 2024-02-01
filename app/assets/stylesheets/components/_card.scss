@@ -2,7 +2,7 @@
   overflow: hidden;
   max-height: 328px;
   min-height: 328px;
-  background: rgb(255, 255, 255);
+  background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   transition: transform .2s;
   /* Animation */
@@ -54,12 +54,13 @@
   max-height: 380px;
   min-height: 328px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   transition: transform .2s;
 }
 
 .booking-card:hover {
-  transform: scale(1.01); /* (105% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.01);
+  /* (105% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .booking-card img {

@@ -1,19 +1,21 @@
 .my-button {
-  border: none;
-  padding: 10px 20px;
-  margin: 0 10px;
-  background-color: rgb(147, 188, 242);
-  border-radius: 20px;
+  color: #4A4A4A;
+  border: 1px solid #4A4A4A;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
 
   &:hover {
-    text-decoration: none;
-    background-color: rgb(28, 84, 181);
+    opacity: 1;
+    border: 1px solid #4A4A4A;
     // font-weight: bolder;
   }
 
   a {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 0, 0);
   }
 }
 
@@ -28,7 +30,7 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgb(255, 255, 255);
+  background: #b0beb6;
 }
 
 .navbar-lewagon .navbar-collapse {
