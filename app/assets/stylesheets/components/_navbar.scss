@@ -4,20 +4,22 @@
   margin: 0 10px;
   background-color: rgb(147, 188, 242);
   border-radius: 20px;
+
   &:hover {
     text-decoration: none;
     background-color: rgb(28, 84, 181);
     // font-weight: bolder;
   }
+
   a {
-    text-decoration:none;
+    text-decoration: none;
     color: white;
   }
 }
 
 .navbar {
   padding: 10px 50px;
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
 }
 
 .navbar h1 {
@@ -26,7 +28,7 @@
 
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgb(255, 255, 255);
 }
 
 .navbar-lewagon .navbar-collapse {

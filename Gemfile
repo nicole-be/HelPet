@@ -62,6 +62,9 @@ gem "cloudinary"
 # faker
 gem 'faker'
 
+# search bar
+gem "pg_search"
+
 
 
 group :development, :test do

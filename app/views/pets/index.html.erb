@@ -1,6 +1,17 @@
+<%= render "pets/search_bar", pets: @pets %>
 <div class="container mx-auto mt-4">
+  <div class="container">
+    <div class= "banner">
+      <img src="https://images.pexels.com/photos/5749112/pexels-photo-5749112.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+      <div class="centered">
+        <h1><strong>Welcome to Helpet</strong></h1>
+        <p><h2> <strong>Embrace comfort.</strong></h2></p>
+        <p><h3>Feel better.</p> <p>every day.</h3></p>
+      </div>
+    </div>
+  </div>
   <div class="d-flex align-items-center justify-content-between">
-    <h2 class="my-3">Here are <%= @pets_count %> available buddies for you!</h2>
+    <h2 class="my-3">Here are <%= @pets.count %> available buddies for you!</h2>
     <div><%= link_to "Create New Buddy", new_pet_path, class: "btn btn-ghost" %></div>
   </div>
   <div class="row">
