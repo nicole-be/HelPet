@@ -11,6 +11,7 @@ class PetsController < ApplicationController
         lng: pet.user.longitude,
         info_window_html: render_to_string(partial: "info_pets", locals: {pet: pet})
       }
+    end
 
     if params.dig(:query).present?
       @pets = Pet.global_search(params[:query])
