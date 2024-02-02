@@ -43,7 +43,7 @@
                 </li>
             <% else %>
               <div class="d-flex flex-row-reverse">
-                <button class="my-button"> <%= link_to "Log in", new_user_session_path %></button>
+                <%= link_to "Log in", new_user_session_path, class: "btn btn-ghost" %>
               </div>
             <% end %>
           </ul>
