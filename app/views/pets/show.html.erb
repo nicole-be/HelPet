@@ -1,25 +1,26 @@
-<div class = "details-container">
+<div class= "details-container">
   <div class="container py-5" id="pets-details">
     <div class="row">
       <div class="col-12 col-md-7 offset-lg-3">
         <div class="bg-white rounded p-3 shadow">
 
           <h1>Companion Details</h1>
-          <div class= "pets_image">
           <% @pet.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
+            <div class= "pets_image">
+              <%= cl_image_tag photo.key, height: 300, width: 300, crop: :fill %>
             </div>
+          <% end %>
           <div>
             <strong>Name:</strong>
-            <%= @pet.name %>
+            <%= @pet.name.capitalize %>
           </div>
           <div>
             <strong>Species:</strong>
-            <%= @pet.species %>
+            <%= @pet.species.capitalize %>
           </div>
           <div>
             <strong>Breed:</strong>
-            <%= @pet.breed %>
+            <%= @pet.breed.capitalize %>
             </div>
           <div>
             <strong>Description:</strong>
@@ -27,12 +28,11 @@
           </div>
           <div>
             <strong>Owner:</strong>
-            <%= @pet.user.first_name %> <%= @pet.user.last_name %>
+            <%= @pet.user.first_name.capitalize %> <%= @pet.user.last_name.capitalize %>
           </div>
-          <% end %>
-          <p>
 
-          <h3>Book me!</h3>
+          <div class="mt-4">
+            <h3>Book me!</h3>
             <%= simple_form_for [@pet, @booking] do |f| %>
               <%= f.input :start_date, as: :string,
                 input_html: { data: { controller: "datepicker" } } %>
@@ -42,6 +42,7 @@
               <%= link_to 'See bookings', pet_bookings_path(@pet), class: "btn btn-ghost" %>
               <%= link_to 'Back', pets_path, class: "btn btn-ghost" %>
             <% end %>
+          </div>
         </div>
       </div>
     </div>
