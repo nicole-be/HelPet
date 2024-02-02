@@ -1,7 +1,7 @@
 <div class= "details-container">
   <div class="container py-5" id="pets-details">
     <div class="row">
-      <div class="col-12 col-md-7 offset-lg-3">
+      <div class="col-12 col-md-6 offset-lg-3">
         <div class="bg-white rounded p-3 shadow">
 
           <h1>Companion Details</h1>
@@ -33,15 +33,17 @@
 
           <div class="mt-4">
             <h3>Book me!</h3>
-            <%= simple_form_for [@pet, @booking] do |f| %>
-              <%= f.input :start_date, as: :string,
+            <div class="text-start">
+              <%= simple_form_for [@pet, @booking] do |f| %>
+                <%= f.input :start_date, label: "From:", placeholder: "#{Date.today.strftime("%d.%m.%Y")}",  as: :string,
+                  input_html: { data: { controller: "datepicker" } } %>
+                <%= f.input :end_date, label: "To:", placeholder: "#{Date.today.strftime("%d.%m.%Y")}", as: :string,
                 input_html: { data: { controller: "datepicker" } } %>
-              <%= f.input :end_date, as: :string,
-              input_html: { data: { controller: "datepicker" } } %>
-              <%= f.submit class: 'btn btn-ghost btn-green' %>
-              <%= link_to 'See bookings', pet_bookings_path(@pet), class: "btn btn-ghost" %>
-              <%= link_to 'Back', pets_path, class: "btn btn-ghost" %>
-            <% end %>
+                <%= f.submit class: 'btn btn-ghost btn-green' %>
+                <%= link_to 'See bookings', pet_bookings_path(@pet), class: "btn btn-ghost" %>
+                <%= link_to 'Back', pets_path, class: "btn btn-ghost" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
