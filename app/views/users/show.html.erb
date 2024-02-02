@@ -4,11 +4,15 @@
   <div class="container my-3 py-1">
     <div class="row">
     <div class="d-flex justify-content-center">
-          <%= cl_image_tag(current_user.photo.key, :transformation=>[
-          {:gravity=>"face", :height=>175, :width=>175, :crop=>"thumb", :radius=>"max", :border=>"2px_solid_black" },
-          {:radius=>"max"},
-          {:fetch_format=>:auto}
-          ]) %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag(current_user.photo.key, :transformation=>[
+            {:gravity=>"face", :height=>175, :width=>175, :crop=>"thumb", :radius=>"max", :border=>"2px_solid_black" },
+            {:radius=>"max"},
+            {:fetch_format=>:auto}
+            ]) %>
+          <% else %>
+            <%= image_tag "avatar-placeholder.jpg", width: 175, height: 175, crop: "thumb", class: "rounded-circle" %>
+          <% end %>
     </div>
     <p class="text-center pt-4"> <i class="fa-solid fa-location-dot px-2"></i><%= @user.address %> </p>
     </div>
@@ -59,9 +63,9 @@
     </div>
 
     <div class="text-center py-6">
-      <button class="my-button my-4"><%= link_to "Edit your profile", edit_user_registration_path %></button>
+      <%= link_to "Edit your profile", edit_user_registration_path, class:"btn btn-ghost my-3" %>
       <div>
-      <button class="my-button my-4 mx-4"><%= link_to "Back", root_path %></button>
+      <%= link_to "Back", root_path, class:"btn btn-ghost" %>
       </div>
     </div>
   </div>
