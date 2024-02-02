@@ -62,13 +62,15 @@
       <% end %>
     </div>
 
-    <div class="text-center py-6">
-      <%= button_to "Edit your profile", edit_user_registration_path, class: "btn-ghost my-2 mx-4" %>
-      <div>
-      <%= button_to "Back", root_path, class:"btn-ghost my-2 mx-4" %>
+    <div class="text-center">
+      <div class="my-3">
+        <%= link_to "Edit your profile", edit_user_registration_path, class: "btn-ghost mx-4" %>
       </div>
       <div class="my-3">
-      <%= link_to "Delete your account", user_registration_path, class:"btn-ghost btn-red my-4", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <%= link_to "Back", root_path, class: "btn-ghost mx-4" %>
+      </div>
+      <div class="my-3">
+        <%= link_to "Delete your account", user_registration_path, class: "btn-ghost btn-red my-4", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
       </div>
     </div>
   </div>
