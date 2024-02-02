@@ -4,5 +4,8 @@ class UsersController < ApplicationController
     @pets = @user.pets
   end
 
-
+  def destroy
+    @user = current_user
+    @user.destroy
+  end
 end
