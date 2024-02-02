@@ -5,7 +5,7 @@
         <h3>Create a new pet profile</h3>
         <%= simple_form_for @pet do |f| %>
           <%= f.input :name %>
-          <%= f.input :species %>
+          <%= f.input :species, collection: Pet::SPECIES  %>
           <%= f.input :breed %>
           <%= f.input :description %>
           <%= f.input :price, placeholder: 'Price per day (€)' %>
