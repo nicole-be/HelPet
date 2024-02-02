@@ -38,7 +38,7 @@
     <div class="col text-center my-3 py-3">
       <% if @user.pets.empty?%>
         <h4>My pets</h4>
-        <p><%= "You have no pets!" %></p>
+        <em><p><%= "You have no pets!" %></p></em>
         <% else %>
         <div class="row">
         <h4><%= "My pets"%></h4>
@@ -63,9 +63,12 @@
     </div>
 
     <div class="text-center py-6">
-      <%= link_to "Edit your profile", edit_user_registration_path, class:"btn btn-ghost my-3" %>
+      <%= button_to "Edit your profile", edit_user_registration_path, class: "btn-ghost my-2 mx-4" %>
       <div>
-      <%= link_to "Back", root_path, class:"btn btn-ghost" %>
+      <%= button_to "Back", root_path, class:"btn-ghost my-2 mx-4" %>
+      </div>
+      <div class="my-3">
+      <%= link_to "Delete your account", user_registration_path, class:"btn-ghost btn-red my-4", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
       </div>
     </div>
   </div>

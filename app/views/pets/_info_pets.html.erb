@@ -1,4 +1,6 @@
-<div class="d-flex flex-column justify-content-center">
+
+<div class="d-flex flex-column justify-content-center text-decoration-none">
+<%= link_to pet_path(pet) do %>
   <h2 class="text-center"><%= pet.name %></h2>
   <p class="text-center"><i class="fa-solid fa-location-dot px-2"></i><%= pet.user.address %></p>
   <%= cl_image_tag(pet.photos[0].key,:transformation=>[
@@ -6,4 +8,5 @@
           {:radius=>"max"},
           {:fetch_format=>:auto}
           ]) %>
+<% end %>
 </div>
