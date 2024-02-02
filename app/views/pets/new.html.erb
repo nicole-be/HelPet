@@ -8,6 +8,7 @@
           <%= f.input :species %>
           <%= f.input :breed %>
           <%= f.input :description %>
+          <%= f.input :price, placeholder: 'Price per day (€)' %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           <%= f.submit class: 'btn btn-ghost btn-green' %>
           <%= link_to 'Back', pets_path, class: "btn btn-ghost" %>
