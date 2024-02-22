@@ -65,6 +65,8 @@ gem 'faker'
 # search bar
 gem "pg_search"
 
+# update cors policy
+gem "rack-cors"
 
 
 group :development, :test do
