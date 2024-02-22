@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ['https://jndrkmllh.github.io', 'http://localhost:4000/profile/'] # Replace with your GitHub Pages URL
+    origins ['https://jndrkmllh.github.io', 'http://localhost:4000'] # Replace with your GitHub Pages URL
     resource '*', headers: :any, methods: [:get, :options, :head]
   end
 end
